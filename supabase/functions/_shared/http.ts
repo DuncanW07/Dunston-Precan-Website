@@ -1,5 +1,7 @@
 // Shared helpers for the storefront edge functions.
-const ALLOWED = (Deno.env.get('ALLOWED_ORIGINS') ?? '').split(',').map((s) => s.trim()).filter(Boolean);
+// Sites allowed to call these functions. Set ALLOWED_ORIGINS to override (comma-separated).
+const DEFAULT_ORIGINS = 'https://dunston-precan.vercel.app,http://localhost:5173';
+const ALLOWED = (Deno.env.get('ALLOWED_ORIGINS') || DEFAULT_ORIGINS).split(',').map((s) => s.trim()).filter(Boolean);
 
 export function cors(req: Request): Record<string, string> {
   const origin = req.headers.get('origin') ?? '';

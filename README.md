@@ -51,6 +51,10 @@ How the page uses it (`js/main.js`, set by `data-video` on `.bg-hero` in `index.
 
 To swap the clip, replace the file and keep the name. To turn it off, empty `data-video`. A smaller encode (about 4 MB) would need ffmpeg, which isn't installed here.
 
+## Supabase (live)
+
+Project `dunston-precan` (ref `mgaqrmuwndkhadlsxjgq`, US East). Schema and row-level security applied, catalogue seeded, `join-waitlist` deployed. Still to do before signups work: create Cloudflare Turnstile keys, put the site key in `js/config.js` and set `TURNSTILE_SECRET_KEY` under Edge Functions > Secrets. `create-checkout-session` and `stripe-webhook` are not deployed until sales open.
+
 ## Going live (later)
 
 1. Create the Supabase project and run `supabase/migrations/20261023000000_storefront.sql`.

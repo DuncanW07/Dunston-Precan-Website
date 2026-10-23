@@ -230,7 +230,8 @@ function initWaitlist() {
     e.preventDefault();
     const email = String(new FormData(form).get('email') || '').trim();
     if (!/^[^\s@]{1,64}@[^\s@]{1,190}\.[^\s@]{2,24}$/.test(email)) { msg.textContent = 'Enter a valid email address.'; return; }
-    if (!supabaseReady()) { msg.textContent = 'Preview mode: signups are not being stored yet.'; return; }
+    // signups need the bot check; until Turnstile keys are in, say so instead of failing
+    if (!supabaseReady() || !CONFIG.TURNSTILE_SITE_KEY) { msg.textContent = 'Signups open very soon. Check back shortly.'; return; }
     const token = form.querySelector('[name="cf-turnstile-response"]')?.value || '';
     if (CONFIG.TURNSTILE_SITE_KEY && !token) { msg.textContent = 'Please complete the check above.'; return; }
     const btn = form.querySelector('button'); btn.disabled = true;
