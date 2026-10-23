@@ -8,7 +8,7 @@ export const CONFIG = {
   SUPABASE_ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1nYXFybXV3bmRraGFkbHN4amdxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI3NzU2NTQsImV4cCI6MjEwODM1MTY1NH0.qP8rOsv9PGa_9khFkoeiQTI85fRKJlXPCvE5MGw0t-8',
 
   // Cloudflare Turnstile site key (public). Leave empty to hide the widget.
-  TURNSTILE_SITE_KEY: '',
+  TURNSTILE_SITE_KEY: '0x4AAAAAAFix4n7pkIbrI_io',
 
   // Orders stay closed until the founders say otherwise. While false, the cart
   // works but checkout shows the pre-launch notice instead of taking payment.
