@@ -1,0 +1,7 @@
+assets/gen
+supabase
+scripts
+.env
+.env.*
+*.md
+blender/

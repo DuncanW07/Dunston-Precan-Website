@@ -1,0 +1,16 @@
+/* Plain content pages (privacy). */
+body.page { background: var(--paper); }
+.page-bar { position: sticky; }
+.legal { max-width: 46rem; padding-block: clamp(56px, 8vw, 96px) clamp(64px, 9vw, 120px); color: var(--ink); }
+.legal .eyebrow { color: var(--brg); }
+.legal h1 { font-size: clamp(2.6rem, 6vw, 4rem); color: var(--brg-deep); margin-top: 10px; }
+.legal .updated { color: var(--ink-soft); font-size: .92rem; margin-top: 8px; }
+.legal .lead { font-size: 1.15rem; margin-top: 28px; }
+.legal h2 { font-size: 1.9rem; color: var(--brg-deep); margin-top: 40px; }
+.legal p, .legal li { color: var(--ink-soft); font-weight: 300; }
+.legal p { margin-top: 12px; }
+.legal ul { margin: 12px 0 0; padding-left: 1.2em; display: grid; gap: 8px; }
+.legal b { color: var(--ink); font-weight: 500; }
+.legal .tbc { background: #f3e6c4; color: var(--ink); padding: 1px 6px; border-radius: 3px; font-weight: 400; }
+.legal .draft { margin-top: 18px; padding: 10px 14px; border-left: 3px solid var(--brass); background: #f6eedb; color: var(--ink); font-size: .92rem; font-weight: 400; }
+.legal a { color: var(--brg); }

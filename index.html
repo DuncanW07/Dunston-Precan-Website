@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dunston Precan · DP-41 Automatic</title>
+<meta name="description" content="Dunston Precan makes original-design automatic watches. The DP-41: a Miyota 82S5 Japanese automatic in a 41 mm steel case, in ten colorways named for the virtues.">
+<meta name="theme-color" content="#013D26">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta property="og:title" content="Dunston Precan · DP-41">
+<meta property="og:description" content="A watch for the work you're putting in.">
+<meta property="og:image" content="assets/img/og.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/brand/logo.png">
+<link rel="preload" href="assets/fonts/cormorant-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/jost-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/img/hero-beach-2560.webp" as="image" media="(min-width: 761px)">
+<link rel="preload" href="assets/img/hero-beach-1280.webp" as="image" media="(max-width: 760px)">
+<link rel="modulepreload" href="vendor/three.module.min.js">
+<link rel="stylesheet" href="css/site.css">
+<script type="module" src="js/main.js"></script>
+</head>
+<body>
+<a class="skip" href="#waitlist">Skip to the waitlist</a>
+
+<div class="loader" aria-hidden="true">
+  <img src="assets/brand/script-ivory.svg" alt="" width="320" height="76">
+  <div class="loader-bar"><span></span></div>
+</div>
+
+<div id="bg" aria-hidden="true">
+  <div class="bg-layer bg-hero" data-video="assets/video/hero-loop.mp4"></div>
+  <div class="bg-layer bg-dusk"></div>
+  <div class="bg-layer bg-deep"></div>
+  <div class="bg-grain"></div>
+</div>
+
+<header class="topnav">
+  <nav class="nav" aria-label="Primary">
+    <a href="#stage" data-go="dp41">The DP-41</a>
+    <a href="#virtues" data-go="virtues">The Virtues</a>
+    <a href="#story" data-go="story">Our story</a>
+  </nav>
+  <button class="cart-btn" type="button" data-cart-open aria-label="Open cart">
+    <span>Cart</span><span class="cart-count" data-cart-count hidden>0</span>
+  </button>
+</header>
+
+<header class="bar" aria-label="Dunston Precan">
+  <div class="bar-in">
+    <nav class="nav nav-bar" aria-label="Shop">
+      <a href="#virtues" data-go="virtues">The Virtues</a>
+      <a href="#story" data-go="story">Our story</a>
+    </nav>
+    <a class="bar-logo" href="#stage" data-go="top" aria-label="Dunston Precan, back to top"><img src="assets/brand/script-ivory.svg" alt="" width="200" height="48"></a>
+    <button class="cart-btn" type="button" data-cart-open aria-label="Open cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+      <span class="cart-count" data-cart-count hidden>0</span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section id="stage" class="stage" aria-label="The DP-41">
+    <div class="stage-pin">
+      <h1 class="hero-title" data-hero="title"><img src="assets/brand/script-green.svg" alt="Dunston Precan" width="3180" height="756"></h1>
+
+      <img class="fallback-watch" src="assets/watches/discipline.webp" alt="Dunston Precan Discipline, forest green and silver, brown leather strap" width="820" height="1100">
+
+      <canvas id="gl" aria-hidden="true"></canvas>
+      <div class="flash" aria-hidden="true"></div>
+
+      <div class="hero-foot" data-hero="foot">
+        <p class="tagline">A watch for the work you're putting in.</p>
+        <div class="ctas">
+          <a class="btn-ghost" href="#stage" data-go="dp41">Inside the DP-41</a>
+          <a class="btn-ghost" href="#virtues" data-go="virtues">Shop the Virtues</a>
+        </div>
+      </div>
+      <div class="scroll-cue" aria-hidden="true"><span></span>Scroll</div>
+
+      <div class="passage is-left" data-p="0.062,0.085,0.118,0.14">
+        <span class="eyebrow">Our story</span>
+        <h2>We designed the watches we couldn't find.</h2>
+        <p>Dunston Precan was founded by two young guys fed up with the watch market. So we stopped complaining and drew our own.</p>
+      </div>
+      <div class="passage is-left" data-p="0.14,0.16,0.19,0.212">
+        <span class="eyebrow">We don't settle</span>
+        <h2>Built right, or not at all.</h2>
+        <p>We would rather wait and raise more to build the best version of this watch than launch a cheaper one.</p>
+      </div>
+      <div class="passage is-top" data-p="0.268,0.296,0.33,0.352">
+        <span class="eyebrow">Inside the DP-41</span>
+        <h2>Built to a tolerance of 0.02 mm.</h2>
+        <p>Twenty-one parts around one Japanese automatic heart.</p>
+      </div>
+      <div class="passage is-foot" data-p="0.36,0.38,0.44,0.465">
+        <p>Ø41 mm · 11.52 mm thick · Miyota 82S5 · sapphire front and back</p>
+      </div>
+      <div class="passage is-left" data-p="0.55,0.575,0.615,0.64">
+        <span class="eyebrow">Original by design</span>
+        <h2>Designs you won't see twice.</h2>
+        <p>Original dials on Japanese automatic movements, in ten colorways.</p>
+      </div>
+      <div class="passage is-left is-track" data-p="0.742,0.756,0.782,0.794">
+        <span class="eyebrow">Insight 01</span>
+        <h2>Quality you can count on.</h2>
+        <p>A Japanese automatic movement, sapphire front and back, and a 316L steel case built to 0.02 mm.</p>
+      </div>
+      <div class="passage is-right is-track" data-p="0.836,0.846,0.88,0.89">
+        <span class="eyebrow">Insight 02</span>
+        <h2>Design that stands out.</h2>
+        <p>Original dials you won't see twice, in ten colorways named for the virtues.</p>
+      </div>
+
+      <svg class="leaders" aria-hidden="true"></svg>
+      <div class="labels" aria-hidden="true"></div>
+
+      <section class="collection-panel" id="virtues" aria-labelledby="virtuesTitle">
+        <img class="panel-bg" src="assets/img/collection-beach-2560.webp" srcset="assets/img/collection-beach-1280.webp 1280w, assets/img/collection-beach-2560.webp 2560w" sizes="100vw" alt="" decoding="async" loading="lazy">
+        <div class="panel-shade"></div>
+        <div class="panel-head">
+          <span class="eyebrow">The DP-41 collection</span>
+          <h2 id="virtuesTitle">The Virtues</h2>
+          <p class="sub">One watch. Ten colors, each named for a virtue. Tap a watch to see every color and band.</p>
+        </div>
+        <div class="featured" id="featured"></div>
+        <div class="more">
+          <span class="more-label">Also in the collection</span>
+          <div class="chips" id="moreVirtues"></div>
+        </div>
+      </section>
+
+      <div class="fallback-specs">
+        <h2>Inside the DP-41</h2>
+        <ul>
+          <li><b>Miyota 82S5 automatic.</b> Japanese, self-winding, open heart, no battery.</li>
+          <li><b>41 mm 316L steel case.</b> 47.6 mm lug to lug, 21 mm lugs, 11.52 mm thick.</li>
+          <li><b>Sapphire crystal.</b> Ø33.00 × 1.50 mm, anti-reflective inside, plus a sapphire display caseback.</li>
+          <li><b>Fluted bezel.</b> 72 sharp V-flutes.</li>
+          <li><b>Côtes de Genève dial.</b> Vertical stripes, floating index ring, 12 applied markers with lume.</li>
+          <li><b>Signature details.</b> Ring-hub minute hand, lance hour hand, numbered seconds disc, AUTOMATIC key-bridge.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="story" class="story">
+    <div class="wrap">
+      <div class="story-lead">
+        <span class="eyebrow">Dunston Co.</span>
+        <h2>A watch should stand for the work you're putting in.</h2>
+        <p>Young people who bet on themselves deserve quality without paying for a name. The market gave them three choices: knockoffs with no support, a waitlist and a price for the logo, or the same safe designs in the same muted colors. We wanted a fourth.</p>
+      </div>
+      <div class="pillars">
+        <div><h3>Japanese automatic</h3><p>Every DP-41 runs on a self-winding Miyota 82S5 with an open view of it working. No battery, ever.</p></div>
+        <div><h3>Designs you won't see twice</h3><p>Original dials with a numbered seconds disc turning over the open heart, under sapphire front and back.</p></div>
+        <div><h3>Direct, with real support</h3><p>Sold online with no retail markup, and a real person to answer when you need one.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="waitlist" class="waitlist">
+    <div class="wrap">
+      <h2>Be first to the first drop.</h2>
+      <p class="waitlist-sub">Our first run is small. Leave your email and we'll tell you the moment orders open.</p>
+      <form id="waitlistForm" class="waitlist-form" novalidate>
+        <label class="sr" for="email">Email address</label>
+        <input id="email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="254" placeholder="you@email.com" required>
+        <button class="btn" type="submit">Notify me</button>
+        <div id="turnstile"></div>
+      </form>
+      <p class="fine">We'll only email you about launch updates. <a href="privacy.html">Privacy policy</a></p>
+      <p class="fine" id="waitlistMsg" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <img src="assets/brand/script-ivory.svg" alt="Dunston Precan" width="180" height="43">
+    <nav aria-label="Legal"><a href="privacy.html">Privacy</a><a href="terms.html">Terms of sale</a><a href="shipping-returns.html">Shipping &amp; returns</a><a href="warranty.html">Warranty</a></nav>
+    <p>&copy; 2026 Dunston Co. Preview site. Orders open with our first drop.</p>
+  </div>
+</footer>
+
+<div class="scrim" id="scrim" hidden></div>
+
+<aside class="drawer" id="drawer" hidden role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+  <div class="drawer-head"><h2 id="cartTitle">Your cart</h2><button class="x" id="closeCart" type="button" aria-label="Close cart">&times;</button></div>
+  <div class="lines" id="lines"></div>
+  <div class="total"><span>Subtotal</span><span id="subtotal">$0</span></div>
+  <p class="fine">Shipping and taxes are calculated at checkout.</p>
+  <button class="btn full" id="checkout" type="button">Checkout</button>
+  <p class="notice" id="checkoutNote" role="status" hidden></p>
+</aside>
+
+<div class="product" id="product" hidden role="dialog" aria-modal="true" aria-labelledby="pName">
+  <button class="x product-x" id="closeProduct" type="button" aria-label="Close">&times;</button>
+  <div class="product-in">
+    <div class="gallery"><div class="p-img" id="pImg"></div><div class="views" id="views"></div></div>
+    <div class="p-info">
+      <span class="eyebrow">Dunston Precan · DP-41</span>
+      <h2 id="pName" class="p-name"></h2>
+      <div class="p-price" id="pPrice"></div>
+      <p class="p-moment" id="pMoment"></p>
+      <div class="opt"><div class="opt-label">Color: <span id="pColorName"></span></div><div class="swatches" id="swatches"></div></div>
+      <div class="opt"><div class="opt-label">Band: <span id="pBandName"></span></div><div class="bands" id="bands"></div></div>
+      <ul class="feats">
+        <li>Miyota 82S5 automatic</li>
+        <li>41 mm 316L steel case</li>
+        <li>72-flute bezel</li>
+        <li>Sapphire front and back</li>
+        <li>Numbered seconds disc</li>
+        <li id="pStrapFeat"></li>
+      </ul>
+      <button class="btn full" id="addBtn" type="button">Add to cart</button>
+      <p class="added" id="added" hidden>Added to your cart. <button type="button" class="linkish" id="addOpenCart">View cart</button></p>
+      <div class="virtue"><h3 id="pVirtueHead"></h3><p id="pVirtue"></p></div>
+    </div>
+  </div>
+</div>
+
+<noscript><p class="noscript">This site needs JavaScript for the 3D watch and the cart. <a href="privacy.html">Privacy policy</a></p></noscript>
+</body>
+</html>
