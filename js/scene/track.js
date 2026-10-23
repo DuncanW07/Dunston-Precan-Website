@@ -232,15 +232,18 @@ export class Track {
     const on = s > 0;
     this.car.visible = on;
     if (!on) return;
-    const [x, y] = carPosAt(s), [x2, y2] = carPosAt(s + 2);
+    const [x, y] = carPosAt(s), h = carHeadingAt(s);
     this.car.position.x = x; this.car.position.y = y;
-    this.car.rotation.z = Math.atan2(x2 - x, -(y2 - y));
+    // the car's nose is local -y: rotate so -y points along the heading
+    this.car.rotation.z = h + Math.PI / 2;
     const appear = Math.min(1, s / 10);
     this.carShadow.material.opacity = 0.75 * appear;
     if (this.model) {
       // engine and road vibration
       this.model.position.z = 0.06 * rumble * Math.sin(t * 71) + 0.04 * rumble * Math.sin(t * 113 + 1.1);
-      this.model.rotation.y = 0.004 * rumble * Math.sin(t * 53);
+      // body roll leans out of the corner, more with speed; tiny chatter from the road
+      const roll = Math.max(-0.07, Math.min(0.07, -carCurvAt(s) * 18 * Math.min(1, speed / 600)));
+      this.model.rotation.y = roll + 0.004 * rumble * Math.sin(t * 53);
       return;
     }
     this.carBody.material.opacity = appear;
@@ -250,10 +253,30 @@ export class Track {
 }
 
 // car position on the racing line, in track coordinates
-export function carPosAt(s) {
-  const p = trackPoint(s), o = racingLine(s);
-  return [p.x - p.ty * o, p.y + p.tx * o];
-}
+// The driven line, precomputed once and smoothed like a real driver steers: the lateral
+// offset is low-passed so the wheel turns in gradually, clips the apex and unwinds on exit,
+// and the path itself is smoothed so heading and curvature change continuously.
+const gauss = (src, sigma) => {
+  const r = Math.ceil(sigma * 3), w = []; let ws = 0;
+  for (let k = -r; k <= r; k++) { const v = Math.exp(-(k * k) / (2 * sigma * sigma)); w.push(v); ws += v; }
+  return src.map((_, i) => { let a = 0; for (let k = -r; k <= r; k++) a += src[Math.min(src.length - 1, Math.max(0, i + k))] * w[k + r]; return a / ws; });
+};
+const LINE_N = N + 1;
+let off = Array.from({ length: LINE_N }, (_, i) => racingLine(i * STEP));
+off = gauss(gauss(off, 16), 10);
+let LX = [], LY = [];
+for (let i = 0; i < LINE_N; i++) { const p = trackPoint(i * STEP); LX.push(p.x - p.ty * off[i]); LY.push(p.y + p.tx * off[i]); }
+LX = gauss(LX, 5); LY = gauss(LY, 5);
+const LH = LX.map((_, i) => { const a = Math.max(0, i - 4), b = Math.min(LINE_N - 1, i + 4); return Math.atan2(LY[b] - LY[a], LX[b] - LX[a]); });
+for (let i = 1; i < LINE_N; i++) { while (LH[i] - LH[i - 1] > Math.PI) LH[i] -= 2 * Math.PI; while (LH[i] - LH[i - 1] < -Math.PI) LH[i] += 2 * Math.PI; }
+const LHs = gauss(LH, 4);
+const lerpAt = (arr, s) => { const f = Math.min(Math.max(s / STEP, 0), LINE_N - 1.001), i = Math.floor(f), u = f - i; return arr[i] + (arr[i + 1] - arr[i]) * u; };
+
+// car position on the driven line, in track coordinates
+export function carPosAt(s) { return [lerpAt(LX, s), lerpAt(LY, s)]; }
+// heading of travel (radians, atan2 of the direction) and signed curvature (1/mm)
+export function carHeadingAt(s) { return lerpAt(LHs, s); }
+export function carCurvAt(s) { return (lerpAt(LHs, s + 3) - lerpAt(LHs, s - 3)) / 6; }
 
 // camera stops following once the car is into the last bend
 export const TRACK = { S0, TRACK_LEN, CAM_MAX: TRACK_LEN - 40 };

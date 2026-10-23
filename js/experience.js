@@ -10,7 +10,7 @@ import { loadTex, makeMaterials, radialGradientTexture } from './scene/materials
 import { buildEnvironment } from './scene/env.js';
 import { loadWatch } from './scene/watch.js';
 import { Strap } from './scene/strap.js';
-import { Track, trackPoint, carPosAt, TRACK, TRACK_Z } from './scene/track.js';
+import { Track, trackPoint, carPosAt, carHeadingAt, TRACK, TRACK_Z } from './scene/track.js';
 import { Glints, Burst, SpeedLines } from './scene/effects.js';
 import { GLTFLoader } from '../vendor/GLTFLoader.js';
 import { MeshoptDecoder } from '../vendor/meshopt_decoder.module.js';
@@ -345,8 +345,9 @@ export async function startExperience({ onProgress, onReady, onCollection }) {
     if (chase > 0 && carS > 0) {
       // ride along: low behind the car, looking down the road; let it go at the end
       const sCam = Math.min(carS, DRIVE(CAM_RELEASE)[0]);
-      const [cx, cy] = carPosAt(sCam), [fx2, fy2] = carPosAt(sCam + 6);
-      let fx = fx2 - cx, fy = fy2 - cy; const fl = Math.hypot(fx, fy) || 1; fx /= fl; fy /= fl;
+      // follow on the smoothed heading, a beat behind the car, like a chase car would
+      const [cx, cy] = carPosAt(sCam), hc = carHeadingAt(Math.max(sCam - 6, 0));
+      const fx = Math.cos(hc), fy = Math.sin(hc);
       const fc = fit(0.7); // portrait screens: sit further back
       const behind = carModel ? 36 * fc : 0, up = carModel ? 21 * fc : 62 * fc, ahead = carModel ? 12 : 0;
       const chasePos = V(cx - fx * behind, cy - fy * behind, TRACK_Z + up);
