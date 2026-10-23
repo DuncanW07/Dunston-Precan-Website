@@ -7,3 +7,6 @@ supabase/.temp/
 supabase/.branches/
 # raw, full-size generated sources (web-ready copies live in assets/img, assets/tex, assets/watches)
 assets/gen/
+
+.vercel
+.env*
