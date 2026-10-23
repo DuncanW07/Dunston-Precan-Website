@@ -10,3 +10,6 @@ assets/gen/
 
 .vercel
 .env*
+blender/build.log
+blender/renders/
+blender/*.blend1
